@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name= "usb" default="/dev/a_mega" />
+
+  <node pkg="rosserial_python" type="serial_node.py" name="arduino" output="screen">
+    <param name="port" value="/dev/a_mega"/>
+    <param name="baud" value="57600"/>
+  </node>
+
+</launch>
