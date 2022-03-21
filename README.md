@@ -7,6 +7,10 @@ SDA             20
 VDD             3.3V
 GND             GND
 ```
+## MPU9250 Arduino Library
+```bash
+https://robojax.com/sites/default/files/zip-files/robojax-MPU9250-master.zip
+```
 
 ## Code Uploading to Arduino
 If you get "Permission Denied" error during the uploading process of the code at mpu_9250_v22 directory:
