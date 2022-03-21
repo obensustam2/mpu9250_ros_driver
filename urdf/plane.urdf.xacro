@@ -18,7 +18,7 @@
       <visual>
         <origin rpy="0 0 1.5708" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://imu_ros_arduino/mesh/FUGMJ38JX8T7E5A.stl" scale="0.01 0.01 0.01"/> 
+          <mesh filename="package://mpu9250_ros_driver/mesh/FUGMJ38JX8T7E5A.stl" scale="0.01 0.01 0.01"/> 
         </geometry>
         <material name="white"/>
       </visual>

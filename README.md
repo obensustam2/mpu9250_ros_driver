@@ -18,23 +18,46 @@ ls /dev/tty*
 
 After you find the name of your connection, make this port executable.
 ```bash
-sudo chmod a+rw /dev/ttyXXXX
+sudo chmod a+rw /dev/tty<port_name>
+```
+
+## Arduino Static Port Assignmet 
+```bash
+udevadm info --name=/dev/tty<port_name> --attribute-walk
+cd /etc/udev/rules.d
+sudo touch 99-usb-serial.rules
+sudo nano 99-usb-serial.rules
+SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0042", SYMLINK+="a_mega"
+sudo udevadm trigger
+ls -l /dev/<device_name>
+sudo usermod -a -G tty $USER
+sudo usermod -a -G dialout $USER
+sudo reboot
+```
+
+## Installation
+```bash
+sudo apt-get install ros-<ros_version>-imu-complementary-filter*
 ```
 
 ## arduino.launch
-To enable arduino node that publishes "/imu/data_raw" message that doesn't have orientation data.
+This launch file enables: 
+- arduino node that publishes "/imu/data_raw" message that doesn't have orientation data.
+
 ```bash
-roslaunch imu_ros_arduino arduino.launch
+roslaunch mpu9250_ros_driver arduino.launch
 ```
 
 ## imu_demo.launch
-To enable complementary_filter_node that subscribes "/imu/data_raw" and publishes "imu/data" message that has orientation data.
+This launch file enables:
+- complementary_filter_node that subscribes "/imu/data_raw" and publishes "imu/data" message that has orientation data.
 
-To enable robot_state_publisher node that publishes robot model.
+- robot_state_publisher node that publishes robot model.
 
-To enable rpy_tf node that updates robot orientation by using upcoming "imu/data".
+- enable rpy_tf node that updates robot orientation by using upcoming "imu/data".
 
-To enable RViZ.
+- enable RViZ.
+
 ```bash
-roslaunch imu_ros_arduino imu_demo.launch
+roslaunch mpu9250_ros_driver imu_demo.launch
 ```

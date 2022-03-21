@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>imu_ros_arduino</name>
+  <name>mpu9250_ros_driver</name>
   <version>0.0.0</version>
-  <description>The imu_ros_arduino package</description>
+  <description>The mpu9250_ros_driver package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
