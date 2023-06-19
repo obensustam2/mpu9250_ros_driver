@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find mpu9250_ros_driver)/urdf/plane.urdf.xacro'" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
+  </node>
+  
+  <node name="imu_filter_node_for_orientation" pkg="imu_complementary_filter" type="complementary_filter_node" >
+  </node>
+  
+  <node name="rpy_tf" pkg="mpu9250_ros_driver" type="tf_broadcaster_imu.py" >
+  </node>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mpu9250_ros_driver)/rviz/rviz_config.rviz"/> 
+
+</launch>
